@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="dark_blue">#02446F</color>
+
+    <color name="primary">#C9C6C5</color>
+    <color name="on_primary">#313030</color>
+    <color name="primary_container">#0A0A0A</color>
+    <color name="on_primary_container">#7B7979</color>
+    <color name="inverse_primary">#5F5E5E</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#E9C349</color>
+    <color name="on_secondary">#3C2F00</color>
+    <color name="yellow">#AF8D11</color>
+    <color name="on_secondary_container">#342800</color>
+
+    <!-- Tertiary Colors -->
+    <color name="tertiary">#C6C6C6</color>
+    <color name="on_tertiary">#2F3131</color>
+    <color name="tertiary_container">#090A0B</color>
+    <color name="on_tertiary_container">#79797A</color>
+
+    <!-- Background & Surface -->
+    <color name="background">#121414</color>
+    <color name="on_background">#E2E2E2</color>
+    <color name="surface">#121414</color>
+    <color name="on_surface">#E2E2E2</color>
+    <color name="surface_variant">#333535</color>
+    <color name="on_surface_variant">#C4C7C7</color>
+    <color name="surface_tint">#C9C6C5</color>
+    <color name="inverse_surface">#E2E2E2</color>
+    <color name="inverse_on_surface">#2F3131</color>
+
+    <!-- Surface Variations (M3) -->
+    <color name="surface_dim">#121414</color>
+    <color name="surface_bright">#38393a</color>
+    <color name="surface_container_lowest">#0C0F0F</color>
+    <color name="surface_container_low">#1A1C1C</color>
+    <color name="surface_container">#1E2020</color>
+    <color name="surface_container_high">#282A2B</color>
+    <color name="surface_container_highest">#333535</color>
+
+    <!-- Fixed Colors (M3) -->
+    <color name="primary_fixed">#E5E2E1</color>
+    <color name="primary_fixed_dim">#C9C6C5</color>
+    <color name="on_primary_fixed">#1C1B1B</color>
+    <color name="on_primary_fixed_variant">#474646</color>
+
+    <color name="secondary_fixed">#FFE088</color>
+    <color name="secondary_fixed_dim">#E9C349</color>
+    <color name="on_secondary_fixed">#241A00</color>
+    <color name="on_secondary_fixed_variant">#574500</color>
+
+    <color name="tertiary_fixed">#E3E2E2</color>
+    <color name="tertiary_fixed_dim">#C6C6C6</color>
+    <color name="on_tertiary_fixed">#1A1C1C</color>
+    <color name="on_tertiary_fixed_variant">#464747</color>
+
+    <!-- Error Colors -->
+    <color name="error">#FFB4AB</color>
+    <color name="on_error">#690005</color>
+    <color name="error_container">#93000A</color>
+    <color name="on_error_container">#FFDAD6</color>
+
+    <!-- Outline and Borders -->
+    <color name="outline">#8E9192</color>
+    <color name="outline_variant">#444748</color>
+
+</resources>

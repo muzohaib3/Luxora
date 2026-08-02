@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Luxora" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Luxora" parent="Base.Theme.Luxora" />
+
+    <style name="CustomChipChoiceStyle" parent="@style/Widget.MaterialComponents.Chip.Action">
+        <item name="checkedIconVisible">false</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="chipBackgroundColor">@color/surface_container</item>
+        <item name="chipIconVisible">true</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="chipStrokeColor">@color/white</item>
+        <item name="android:textAppearance">@style/ChipTextStyleAppearance</item>
+        <item name="chipIconTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ChipTextStyleAppearance">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+</resources>

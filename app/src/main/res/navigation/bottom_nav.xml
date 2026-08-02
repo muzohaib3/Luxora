@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.zdevlab.luxora.screens.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.zdevlab.luxora.screens.fragments.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/search"
+        android:name="com.zdevlab.luxora.screens.fragments.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/tracking"
+        android:name="com.zdevlab.luxora.screens.fragments.tracking.TrackingFragment"
+        android:label="fragment_tracking"
+        tools:layout="@layout/fragment_tracking" />
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.zdevlab.luxora.screens.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/checkout"
+        android:name="com.zdevlab.luxora.screens.fragments.cart.CheckoutShippingFragment"
+        android:label="checkout"
+        tools:layout="@layout/activity_cart_checkout_shipping" />
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.zdevlab.luxora.screens.fragments.drawer_nav.SettingsFragment"
+        android:label="settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

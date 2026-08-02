@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Luxora</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="GOOGLE_MAP_KEY">AIzaSyAN92h7DhnKWOy8Hsk8pcvcSREn9zMNrU0</string>
+
+    <string name="about">About Luxora\n
+Welcome to Luxora, your premier digital platform designed to redefine convenience, elegance, and reliability in your daily financial and lifestyle experiences.\n
+
+\nBuilt with cutting-edge mobile architecture, Luxora bridges the gap between sophisticated design and high-performance functionality. Our mission is to deliver a seamless, secure, and intuitive ecosystem right to your fingertips, ensuring that managing your essential services feels effortless.
+
+\n\nWhat Drives Us
+\nUser-Centric Engineering: We prioritize fluid navigation, modern UI/UX principles, and lightning-fast responsiveness so you can accomplish your goals without friction.
+
+\nUncompromising Security: Utilizing advanced encryption protocols and rigorous data safety measures, Luxora ensures your personal information and transactions remain fully protected at all times.
+
+\nContinuous Innovation: We constantly refine our codebase, optimize performance, and integrate modern architectural practices (such as clean MVVM patterns and scalable components) to keep your experience modern and reliable.
+
+\n\nOur Vision
+\nTo cultivate a digital environment where speed, aesthetic precision, and robust engineering converge—giving you a dependable companion for your everyday digital needs.
+
+\nThank you for choosing Luxora. We are committed to evolving continuously to serve you better.</string>
+
+
+</resources>

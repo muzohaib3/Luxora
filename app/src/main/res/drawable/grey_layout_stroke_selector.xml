@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/layout_stroke_selector.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Pressed state with stroke -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/outline"/>
+            <stroke android:width="2dp" android:color="#E9C349"/>
+        </shape>
+    </item>
+    <!-- Default state (no stroke or regular background) -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/outline"/>
+            <stroke android:width="0dp" android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+</selector>
