@@ -32,16 +32,19 @@ class SplashActivity : AppCompatActivity() {
                 true ->{
                     Handler().postDelayed({
                         gotoActivity(this, HomeActivity::class.java)
+                        finish()
                     },3000)
                 }
                 false->{
                     Handler().postDelayed({
                         gotoActivity(this,LoginActivity::class.java)
+                        finish()
                     },3000)
                 }
                 else->{
                     Handler().postDelayed({
                         gotoActivity(this,LoginActivity::class.java)
+                        finish()
                     },3000)
                 }
             }

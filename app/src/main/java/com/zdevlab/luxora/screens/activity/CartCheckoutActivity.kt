@@ -1,5 +1,6 @@
 package com.zdevlab.luxora.screens.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -9,11 +10,14 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.tabs.TabLayout
 import com.zdevlab.luxora.R
 import com.zdevlab.luxora.databinding.ActivityCartCheckoutShippingBinding
+import com.zdevlab.luxora.gotoActivity
 import com.zdevlab.luxora.showMessage
+import java.io.Serializable
 
 class CartCheckoutActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityCartCheckoutShippingBinding
+    private var deliveryType = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,41 +34,27 @@ class CartCheckoutActivity : AppCompatActivity(), View.OnClickListener {
         with(binding){
             btContinueToDeliver.setOnClickListener(this@CartCheckoutActivity)
 
-            tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when(tab?.position){
-                        0->{
+            llExpressDelivery.setOnClickListener {
+                cbExpressDelivery.isChecked = true
+            }
 
-                        }
-                        1->{
+            llStandardDelivery.setOnClickListener {
+                cbStandardDelivery.isChecked = true
+            }
 
-                        }
-                        2->{
-
-                        }
-                    }
-                }
-
-                override fun onTabUnselected(p0: TabLayout.Tab?) {
-
-                }
-
-                override fun onTabReselected(p0: TabLayout.Tab?) {
-
-                }
-
-            })
         }
+
     }
 
     override fun onClick(view: View?) {
         when(view?.id){
+
             R.id.btContinueToDeliver->{
 
                 val fullName = binding.etFullName.text.toString().trim()
-                val streetAddress = binding.etFullName.text.toString().trim()
-                val city = binding.etFullName.text.toString().trim()
-                val postalAddress = binding.etFullName.text.toString().trim()
+                val streetAddress = binding.etStreetAddress.text.toString().trim()
+                val city = binding.etCity.text.toString().trim()
+                val postalAddress = binding.etPostalAddress.text.toString().trim()
 
                 when{
                     fullName.isEmpty()->{
@@ -91,7 +81,8 @@ class CartCheckoutActivity : AppCompatActivity(), View.OnClickListener {
     private fun submitResponse(fullName:String, stAdd:String, city:String, pAddress: String){
 
         if (fullName.isNotEmpty() and stAdd.isNotEmpty() and city.isNotEmpty() and pAddress.isNotEmpty()){
-
+            val cartModel = CartCheckoutModel(fullName, stAdd, city, pAddress)
+            gotoActivity(cartModel)
         }
         else{
             showMessage(this, "something missing")
@@ -99,4 +90,19 @@ class CartCheckoutActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    private fun gotoActivity(model: CartCheckoutModel){
+        val intent = Intent(this, OrderSuccessActivity::class.java)
+        intent.putExtra("cart_model",model)
+        startActivity(intent)
+    }
+
 }
+
+
+
+data class CartCheckoutModel(
+    var fullName:String,
+    var streetAdd:String,
+    var city:String,
+    var pAddress:String,
+): Serializable

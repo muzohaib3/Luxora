@@ -20,6 +20,7 @@ import com.zdevlab.luxora.loadImage
 import com.zdevlab.luxora.logMessage
 import com.zdevlab.luxora.screens.fragments.home.NewArrivalsModel
 import com.zdevlab.luxora.screens.fragments.home.Products
+import com.zdevlab.luxora.screens.models.BuyNowModel
 import com.zdevlab.luxora.screens.models.CartItemModel
 import com.zdevlab.luxora.screens.viewmodel.LuxoraViewModel
 import com.zdevlab.luxora.screens.viewmodel.MainRepository
@@ -29,6 +30,8 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityProductDetailsBinding
     private var selectedSize:String? = ""
     private lateinit var viewModel: LuxoraViewModel
+    private var isComingFromJourney = ""
+    private var searchModel: Products? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,14 +62,16 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
             when{
 
-                intent.containsKey("productModel") ->{
+                intent.containsKey("productModel") -> {
+                    isComingFromJourney = "Search"
                     Log.i(LUX_TAG,"1 --> productModel")
-                    val model = intent.getSerializable("productModel")
-                    Log.i(LUX_TAG,"model = $model")
-                    setViews(model as Products)
+                    searchModel = intent.getSerializable("productModel") as Products
+                    Log.i(LUX_TAG,"model = $searchModel")
+                    setViews(searchModel ?: Products())
                 }
 
-                intent.containsKey("newArrival") ->{
+                intent.containsKey("newArrival") -> {
+                    isComingFromJourney = "HomeNewArrival"
                     Log.i(LUX_TAG,"2 --> newArrival")
                     val model = intent.getSerializable("newArrival") as Products
                     setViewNewArrival(model)
@@ -126,7 +131,26 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 selectSize(false,false,true)
             }
             R.id.btBuyNow->{
-                gotoActivity(this, CartCheckoutActivity::class.java)
+                when(isComingFromJourney){
+                    "HomeNewArrival"->{
+//                        val buyModel = BuyNowModel()
+//                        viewModel.setBuyNowModel()
+                    }
+                    "Search"->{
+                        val buyModel = BuyNowModel(
+                            searchModel?.name ?: "",
+                            searchModel?.product_details ?: "",
+                            searchModel?.price ?: "",
+                            searchModel?.imgUrl ?: "",
+                        )
+                        if (viewModel != null) {
+                            MainRepository.setBuyNowModel(buyModel)
+                            gotoActivity(this, CartCheckoutActivity::class.java)
+                        }
+                    }
+                }
+
+
             }
         }
     }
@@ -153,6 +177,10 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         }
+    }
+
+    private fun buyNow(){
+
     }
 
 }

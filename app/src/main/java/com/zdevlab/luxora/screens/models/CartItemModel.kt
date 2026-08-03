@@ -9,3 +9,10 @@ data class CartItemModel(
     val productAmount: String,
     val productImg: String,
 ): Serializable
+
+data class BuyNowModel(
+    val productName: String,
+    val productDetail: String,
+    val productAmount: String,
+    val productImg: String,
+)

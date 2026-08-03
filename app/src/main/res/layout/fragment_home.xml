@@ -22,42 +22,11 @@
             android:paddingEnd="20dp"
             android:paddingTop="20dp">
 
-            <com.google.android.material.chip.ChipGroup
+            <SearchView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:checkedChip="@+id/chip_one"
-                app:selectionRequired="true"
-                app:singleSelection="true"
-                app:chipSpacing="25dp">
-
-                <SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:queryHint="Search"
-                    android:background="@drawable/light_grey_stroke_grey_rounded_bg"/>
-
-                <com.google.android.material.chip.Chip
-                    style="@style/CustomChipChoiceStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="All brands"
-                    android:textColor="@color/white" />
-
-                <com.google.android.material.chip.Chip
-                    style="@style/CustomChipChoiceStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Watches"
-                    android:textColor="@color/white"/>
-
-                <com.google.android.material.chip.Chip
-                    style="@style/CustomChipChoiceStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Shoes"
-                    android:textColor="@color/white" />
-
-            </com.google.android.material.chip.ChipGroup>
+                android:queryHint="Search"
+                android:background="@drawable/light_grey_stroke_grey_rounded_bg"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
