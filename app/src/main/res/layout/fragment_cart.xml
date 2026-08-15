@@ -8,7 +8,7 @@
     android:background="@color/surface_container"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/llScrollMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +16,7 @@
         android:paddingStart="20dp"
         android:paddingTop="20dp"
         android:paddingEnd="20dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,13 +56,16 @@
                 android:layout_marginTop="20dp"
                 android:scrollbars="none"
                 tools:itemCount="2"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/cart_item_layout" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="40dp"
+                android:padding="20dp"
+                android:background="@drawable/light_grey_stroke_grey_rounded_bg">
 
                 <TextView
                     android:id="@+id/tvSummary"
@@ -83,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="Subtotal"
+                    android:text="Quantity"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text=""
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/labelShipping"
@@ -132,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text=""
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/labelSubtotal"
@@ -145,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text=""
+                    android:text="0"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/labelTax"
@@ -178,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/playfair_display_bold"
-                    android:text="$14,432.20"
+                    android:text="0"
                     android:layout_marginStart="10dp"
                     android:textAllCaps="true"
                     android:textColor="@color/yellow"
@@ -218,7 +221,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="40dp">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:tint="@color/white"
@@ -246,7 +249,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:tint="@color/white"
@@ -270,25 +273,30 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
     <LinearLayout
         android:id="@+id/llNoItemFound"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="20dp"
+        android:background="@drawable/light_grey_stroke_grey_rounded_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="vertical">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_gravity="center"
             android:src="@drawable/empty_folder"
             android:tint="@color/white" />
 
@@ -296,11 +304,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat_medium"
             android:textSize="20sp"
             android:text="No item found"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_light"
+            android:textSize="16sp"
+            android:text="Please add item in cart"/>
 
     </LinearLayout>
 

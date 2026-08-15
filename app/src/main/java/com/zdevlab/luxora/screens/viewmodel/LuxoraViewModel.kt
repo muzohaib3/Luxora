@@ -47,5 +47,7 @@ class LuxoraViewModel(): ViewModel(){
         _quantity.value = quantity
     }
 
+    var productBasePrice = ""
+
 
 }

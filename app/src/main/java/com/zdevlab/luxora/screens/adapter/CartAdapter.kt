@@ -45,6 +45,7 @@ class CartAdapter(
             tvPrice.text = item.productAmount
             tvProduct.text = item.productName
             tvDetail.text = item.productDetail
+            viewmodel.productBasePrice = item.productAmount
 
             ivAdd.setOnClickListener {
                 quantity++

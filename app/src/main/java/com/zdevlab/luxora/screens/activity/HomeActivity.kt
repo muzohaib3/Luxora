@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -26,8 +27,25 @@ class HomeActivity : AppCompatActivity() {
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(binding.root)
 
+        if (intent.extras != null && intent != null){
+
+            val isCheckout = intent.getStringExtra("isCheckedOut") ?: ""
+            val isTrackingOrder = intent.getStringExtra("isTrackingOrder") ?: ""
+
+            when
+            {
+                isCheckout == "1"->{
+                    onBackPress()
+                }
+
+                isTrackingOrder == "1"->{
+                    getTrackingScreen()
+                }
+            }
+
+        }
+
         initViews()
-//        showCheckout()
 
     }
     private fun initViews() {
@@ -103,6 +121,19 @@ class HomeActivity : AppCompatActivity() {
 //        }
 //
 //    }
+
+    private fun onBackPress(){
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finishAffinity()
+            }
+        })
+    }
+
+    private fun getTrackingScreen(){
+        findNavController(R.id.navController).navigate(R.id.tracking)
+        binding.bottomNavigationView.menu[3].isChecked = true
+    }
 
 
 

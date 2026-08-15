@@ -34,6 +34,10 @@ class OrderSuccessActivity : AppCompatActivity() {
 
         val intent = intent.extras
         if (intent != null){
+            if (intent.containsKey("ref_id")){
+                val refId = intent.getString("ref_id")
+                binding.tvOrderId.text = "Order Id: "+refId
+            }
             if (intent.containsKey("cart_model")){
                 val model = intent.getSerializable("cart_model") as CartCheckoutModel
                 binding.apply {
@@ -46,12 +50,11 @@ class OrderSuccessActivity : AppCompatActivity() {
         }
 
         binding.btTrackOrder.setOnClickListener {
-
+            gotoActivity(this, "isTrackingOrder","1", HomeActivity::class.java)
         }
 
         binding.btBack.setOnClickListener {
-            gotoActivity(this, HomeActivity::class.java)
-            finish()
+            gotoActivity(this, "isCheckedOut","1", HomeActivity::class.java)
         }
 
     }

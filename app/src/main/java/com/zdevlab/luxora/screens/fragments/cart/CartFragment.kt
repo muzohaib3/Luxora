@@ -11,11 +11,17 @@ import com.zdevlab.luxora.databinding.FragmentCartBinding
 import com.zdevlab.luxora.screens.adapter.CartAdapter
 import com.zdevlab.luxora.screens.viewmodel.LuxoraViewModel
 import com.zdevlab.luxora.R
+import com.zdevlab.luxora.gotoActivity
+import com.zdevlab.luxora.logMessage
+import com.zdevlab.luxora.screens.activity.CartCheckoutActivity
+import com.zdevlab.luxora.screens.models.CartItemModel
+import com.zdevlab.luxora.showMessage
 
 class CartFragment : Fragment(), View.OnClickListener {
 
     lateinit var binding: FragmentCartBinding
     private lateinit var viewModel: LuxoraViewModel
+    private var cartArrayList = ArrayList<CartItemModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +33,8 @@ class CartFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initViews(){
+
+        binding.cvCheckOut.setOnClickListener(this)
         initViewModel()
         getCartList()
     }
@@ -64,15 +72,16 @@ class CartFragment : Fragment(), View.OnClickListener {
                     var totalAmount = 0
                     for(i in items){
                         totalAmount += i.productAmount.replace("$","").trim().toDouble().toInt()
+                        cartArrayList.add(i)
                     }
-
-                    with(binding){
-                        viewModel.savedQuantity.observe(viewLifecycleOwner) { data ->
-                            binding.tvAmountSubTotal.text = data.toString()
-                            tvAmountShipping.text = "$25"
-                            tvAmountTax.text = "$10"
-                            tvAmount.text = "$${(tvAmountSubTotal.text.toString().toInt() + 25 + 10)}"
-                        }
+                }
+                with(binding){
+                    viewModel.savedQuantity.observe(viewLifecycleOwner) { data ->
+                        binding.tvAmountSubTotal.text = data.toString()
+                        tvAmountShipping.text = "$25"
+                        tvAmountTax.text = "$10"
+                        val basePrice = viewModel.productBasePrice.replace("$","").trim().toDouble().toInt()
+                        tvAmount.text = "$${(tvAmountSubTotal.text.toString().toInt() * basePrice) + 25 + 10}"
                     }
                 }
 
@@ -88,6 +97,16 @@ class CartFragment : Fragment(), View.OnClickListener {
         when(view?.id){
 
             R.id.cvCheckOut->{
+                if (binding.tvAmountSubTotal.text.toString().toInt() > 0){
+                    gotoActivity(
+                        requireActivity() ,
+                        "isComingFromCart" ,"1",
+                        "cartList", cartArrayList,
+                        CartCheckoutActivity::class.java
+                    )
+                }else{
+                    showMessage(requireActivity(), "cart is empty")
+                }
 
             }
 
