@@ -64,6 +64,7 @@ class HomeFragment : Fragment() {
         binding.llEdition.setOnClickListener {
             findNavController().navigate(R.id.search)
         }
+
     }
 
     private fun populateNewArrivalWatches(list:List<Products>)

@@ -1,7 +1,10 @@
 package com.zdevlab.luxora.screens.activity
 
 import android.os.Bundle
+import android.transition.Slide
+import android.transition.TransitionManager
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +20,7 @@ import com.zdevlab.luxora.gotoActivity
 import com.zdevlab.luxora.screens.dialog.DialogLoader
 import com.zdevlab.luxora.showMessage
 import com.zdevlab.luxora.utils.LuxoraPreferences
+import com.zdevlab.luxora.visible
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var binding: ActivityLoginBinding
@@ -36,7 +40,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btLogin.setOnClickListener(this)
         binding.loginViaGoogle.setOnClickListener(this)
-        binding.label.setOnClickListener(this)
+        binding.labelSignIn.setOnClickListener(this)
         binding.labelRegister.setOnClickListener(this)
 
         binding.btRegister.setOnClickListener {
@@ -101,7 +105,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             }
 
-            R.id.label -> {
+            R.id.labelSignIn -> {
+                val transition = Slide(Gravity.END).apply { duration = 300 }
+                TransitionManager.beginDelayedTransition(binding.root, transition)
                 binding.llRegister.visibility = View.GONE
                 binding.view2.visibility = View.GONE
                 binding.llLogin.visibility = View.VISIBLE
@@ -109,6 +115,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.labelRegister -> {
+                val transition = Slide(Gravity.END).apply { duration = 300 }
+                TransitionManager.beginDelayedTransition(binding.root, transition)
                 binding.llRegister.visibility = View.VISIBLE
                 binding.view2.visibility = View.VISIBLE
                 binding.llLogin.visibility = View.GONE
@@ -119,10 +127,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun authenticateUser(email: String, pass: String) {
         runCatching {
-            binding.loader.visibility = View.VISIBLE
+            binding.loader.visible(true)
             firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    binding.loader.visibility = View.GONE
+                    binding.loader.visible(false)
                     val currentUser = firebaseAuth.currentUser
                     Log.d(
                         LUX_TAG,
@@ -131,7 +139,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     LuxoraPreferences().put(this,"isLogin",true)
                     gotoActivity(this, HomeActivity::class.java)
                 } else {
-                    showMessage(this@LoginActivity, "No user found")
+                    binding.loader.visible(false)
+                    showMessage(this@LoginActivity, "User doesn't exist")
                 }
             }
         }.onFailure { exception ->
@@ -142,19 +151,31 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun registerUser(email: String, pwd: String, phoneNum: String) {
         runCatching {
-            val user = hashMapOf("email" to email, "password" to pwd, "phoneNum" to phoneNum)
-            firebaseDb.collection("users").add(user).addOnSuccessListener {
-                Toast.makeText(this, "user added to database", Toast.LENGTH_SHORT).show()
-                gotoActivity(this@LoginActivity, LoginActivity::class.java)
-                finish()
+
+            firebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener { result->
+               binding.loader.visible(true)
+
+                if (result.isSuccessful)
+                {
+                    val user = hashMapOf("email" to email, "password" to pwd, "phoneNum" to phoneNum)
+                    firebaseDb.collection("users").add(user).addOnSuccessListener {
+                    Toast.makeText(this, "user added to database", Toast.LENGTH_SHORT).show()
+                    gotoActivity(this@LoginActivity, LoginActivity::class.java)
+                    finish()
+
+                    }.addOnFailureListener {
+                        DialogLoader(this).dismissDialog()
+                        showMessage(this, "user not registered")
+                    }
+                }
 
             }.addOnFailureListener {
-
-                DialogLoader(this).dismissDialog()
-                showMessage(this, "user not registered")
-
+                binding.loader.visible(false)
+                showMessage(this, "user not authenticated(signup)")
             }
+
         }.onFailure { exception ->
+            binding.loader.visible(true)
             Log.i(LUX_TAG, "exception --> ${exception.message}")
         }
 

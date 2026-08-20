@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/surface_container"
+            android:background="@drawable/gray_gradient"
             app:layout_constraintTop_toTopOf="parent" >
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_nav_menu"
-            android:background="@color/surface_container"
+            android:background="@drawable/gray_gradient"
             app:layout_constraintBottom_toBottomOf="parent" />
 
 

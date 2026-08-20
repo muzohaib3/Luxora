@@ -5,6 +5,8 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +20,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.zdevlab.luxora.LuxoraUtils.LUX_TAG
+import com.zdevlab.luxora.screens.dialog.DialogLoader
 
 
 fun gotoActivity(context: Context, activity: Class<*>){
@@ -66,5 +71,14 @@ fun Fragment.gotoFragment(destination: Int, key:String , data: String){
     findNavController().navigate(destination, bundle)
 }
 
+fun View.visible(isVisible: Boolean) {
+    visibility = if (isVisible) View.VISIBLE else View.GONE
+}
+
+fun getScaledBitmapIcon(context: Context, resId: Int, targetWidth: Int, targetHeight: Int): BitmapDescriptor {
+    val unscaledBitmap = BitmapFactory.decodeResource(context.resources, resId)
+    val scaledBitmap = Bitmap.createScaledBitmap(unscaledBitmap, targetWidth, targetHeight, false) //
+    return BitmapDescriptorFactory.fromBitmap(scaledBitmap)
+}
 
 

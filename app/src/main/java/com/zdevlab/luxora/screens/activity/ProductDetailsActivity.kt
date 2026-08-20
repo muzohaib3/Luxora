@@ -24,6 +24,7 @@ import com.zdevlab.luxora.screens.models.BuyNowModel
 import com.zdevlab.luxora.screens.models.CartItemModel
 import com.zdevlab.luxora.screens.viewmodel.LuxoraViewModel
 import com.zdevlab.luxora.screens.viewmodel.MainRepository
+import com.zdevlab.luxora.showMessage
 
 class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -31,6 +32,7 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
     private var selectedSize:String? = ""
     private lateinit var viewModel: LuxoraViewModel
     private var isComingFromJourney = ""
+    private var selectedColor = ""
     private var searchModel: Products? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +57,10 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
             size2.setOnClickListener(this@ProductDetailsActivity)
             size3.setOnClickListener(this@ProductDetailsActivity)
             btBuyNow.setOnClickListener(this@ProductDetailsActivity)
+            llBrown.setOnClickListener(this@ProductDetailsActivity)
+            llBlack.setOnClickListener(this@ProductDetailsActivity)
+            llGray.setOnClickListener(this@ProductDetailsActivity)
+            llBlue.setOnClickListener(this@ProductDetailsActivity)
         }
 
         val intent = intent.extras
@@ -110,7 +116,11 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
             tvProductDetails.text = model.product_details
 
             btAddToCart.setOnClickListener {
-                addToCart(name = model.name?:"", price = model.price?:"", img = model.imgUrl?:"")
+                if (selectedSize?.isNotEmpty() == true){
+                    addToCart(name = model.name?:"", price = model.price?:"", img = model.imgUrl?:"")
+                }else{
+                    showMessage(this@ProductDetailsActivity, "please select any size")
+                }
             }
 
         }
@@ -130,27 +140,38 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
                 selectedSize = "3"
                 selectSize(false,false,true)
             }
+
+            R.id.llBlue->{ selectColor(false, false, false, true) }
+
+            R.id.llBlack->{ selectColor(false, true, false, false) }
+
+            R.id.llBrown->{ selectColor(true, false, false, false) }
+
+            R.id.llGray->{ selectColor(false, false, true, false) }
+
             R.id.btBuyNow->{
-                when(isComingFromJourney){
-                    "HomeNewArrival"->{
+                if (selectedSize?.isNotEmpty() == true){
+                    when(isComingFromJourney){
+                        "HomeNewArrival"->{
 //                        val buyModel = BuyNowModel()
 //                        viewModel.setBuyNowModel()
-                    }
-                    "Search"->{
-                        val buyModel = BuyNowModel(
-                            searchModel?.name ?: "",
-                            searchModel?.product_details ?: "",
-                            searchModel?.price ?: "",
-                            searchModel?.imgUrl ?: "",
-                        )
-                        if (viewModel != null) {
-                            MainRepository.setBuyNowModel(buyModel)
-                            gotoActivity(this, CartCheckoutActivity::class.java)
+                        }
+                        "Search"->{
+                            val buyModel = BuyNowModel(
+                                searchModel?.name ?: "",
+                                searchModel?.product_details ?: "",
+                                searchModel?.price ?: "",
+                                searchModel?.imgUrl ?: "",
+                            )
+                            if (viewModel != null) {
+                                MainRepository.setBuyNowModel(buyModel)
+                                gotoActivity(this, CartCheckoutActivity::class.java)
+                            }
                         }
                     }
+                }else{
+                    showMessage(this,"please select any size")
                 }
-
-
             }
         }
     }
@@ -173,14 +194,48 @@ class ProductDetailsActivity : AppCompatActivity(), View.OnClickListener {
             tvProductDetails.text = newArrivalModel.product_details
 
             btAddToCart.setOnClickListener {
-                addToCart(name = newArrivalModel.name?:"", price = newArrivalModel.price?:"", img = newArrivalModel.imgUrl?:"")
+                if (selectedSize?.isNotEmpty() == true){
+                    addToCart(name = newArrivalModel.name?:"", price = newArrivalModel.price?:"", img = newArrivalModel.imgUrl?:"")
+                }else{
+                    showMessage(this@ProductDetailsActivity, "please select any size")
+                }
+
             }
 
         }
     }
 
-    private fun buyNow(){
+    private fun selectColor(brown:Boolean, black:Boolean, gray:Boolean, blue: Boolean){
+        with(binding){
+            when
+            {
+                brown == true->{
+                    llBrown.setBackgroundResource(R.drawable.brown_solid_yellow_stroke_bg)
+                    llGray.setBackgroundResource(R.drawable.grey_layout_stroke_selector)
+                    llBlue.setBackgroundResource(R.drawable.blue_layout_stroke_selector)
+                    llBlack.setBackgroundResource(R.drawable.light_grey_stroke_black_rounded_bg)
+                }
+                black == true->{
+                    llBrown.setBackgroundResource(R.drawable.brown_layout_stroke_selector)
+                    llGray.setBackgroundResource(R.drawable.grey_layout_stroke_selector)
+                    llBlue.setBackgroundResource(R.drawable.blue_layout_stroke_selector)
+                    llBlack.setBackgroundResource(R.drawable.light_grey_stroke_yellow_rounded_bg)
+                }
+                gray == true->{
+                    llBrown.setBackgroundResource(R.drawable.brown_layout_stroke_selector)
+                    llGray.setBackgroundResource(R.drawable.light_gray_color_yellow_stroke_rounded_bg)
+                    llBlue.setBackgroundResource(R.drawable.blue_layout_stroke_selector)
+                    llBlack.setBackgroundResource(R.drawable.light_grey_stroke_black_rounded_bg)
+                }
+                blue == true->{
+                    llBrown.setBackgroundResource(R.drawable.brown_layout_stroke_selector)
+                    llGray.setBackgroundResource(R.drawable.grey_layout_stroke_selector)
+                    llBlue.setBackgroundResource(R.drawable.blue_color_yellow_stroke_rounded_bg)
+                    llBlack.setBackgroundResource(R.drawable.light_grey_stroke_black_rounded_bg)
+                }
 
+            }
+        }
     }
 
 }

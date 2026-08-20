@@ -10,13 +10,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5">
 
 
             <TextView
@@ -36,40 +43,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
                 android:fontFamily="@font/montserrat_regular"
-                android:hint="FULL NAME"/>
+                android:hint="FULL NAME"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/etStreetAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
                 android:fontFamily="@font/montserrat_regular"
-                android:hint="STREET ADRESS"/>
+                android:hint="STREET ADRESS"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/etCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
                 android:fontFamily="@font/montserrat_regular"
-                android:hint="CITY"/>
+                android:hint="CITY"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/etPostalAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
                 android:fontFamily="@font/montserrat_regular"
-                android:hint="POSTAL CODE"/>
+                android:hint="POSTAL CODE"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,40 +93,39 @@
                 android:id="@+id/llStandardDelivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:padding="10dp"
-                android:background="@drawable/light_grey_stroke_black_rounded_bg">
+                android:background="@drawable/light_grey_stroke_black_rounded_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <RadioButton
                     android:id="@+id/cbStandardDelivery"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/white"
-                        android:textColor="@color/white"
-                        android:textAllCaps="true"
-                        android:textStyle="bold"
                         android:fontFamily="@font/montserrat_medium"
-                        android:hint="Standard Delivery"/>
+                        android:hint="Standard Delivery"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/white"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_light"
-                        android:hint=" 3-5 Business Days"/>
-
+                        android:hint=" 3-5 Business Days"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
 
 
                 </LinearLayout>
@@ -131,40 +137,39 @@
                 android:id="@+id/llExpressDelivery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:background="@drawable/light_grey_stroke_black_rounded_bg">
+                android:background="@drawable/light_grey_stroke_black_rounded_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
                 <RadioButton
                     android:id="@+id/cbExpressDelivery"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/white"
-                        android:textColor="@color/white"
-                        android:textAllCaps="true"
-                        android:textStyle="bold"
                         android:fontFamily="@font/montserrat_medium"
-                        android:hint="Express Shipping"/>
+                        android:hint="Express Shipping"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/white"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/montserrat_light"
-                        android:hint="1-2 Business Days + Extra charges"/>
-
+                        android:hint="1-2 Business Days + Extra charges"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white" />
 
 
                 </LinearLayout>
@@ -188,8 +193,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:background="@drawable/light_grey_stroke_black_rounded_bg">
+                android:background="@drawable/light_grey_stroke_black_rounded_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -207,17 +212,17 @@
                         android:id="@+id/ivCC"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/travel"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/travel" />
 
                     <TextView
                         android:id="@+id/tvCC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAllCaps="true"
-                        android:text="Credit Card"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/montserrat_light"/>
+                        android:fontFamily="@font/montserrat_light"
+                        android:text="Credit Card"
+                        android:textAllCaps="true" />
 
                 </LinearLayout>
 
@@ -247,17 +252,17 @@
                         android:id="@+id/ivCOD"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/travel"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/travel" />
 
                     <TextView
                         android:id="@+id/tvCOD"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="COD"
                         android:layout_marginTop="10dp"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/montserrat_light"/>
+                        android:fontFamily="@font/montserrat_light"
+                        android:text="COD"
+                        android:textAllCaps="true" />
 
                 </LinearLayout>
 
@@ -268,10 +273,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColorHint="@color/white"
+                android:fontFamily="@font/montserrat_light"
                 android:hint="Card Number"
                 android:textColor="@color/white"
-                android:fontFamily="@font/montserrat_light"/>
+                android:textColorHint="@color/white" />
 
             <LinearLayout
                 android:id="@+id/llCreditCardEntry"
@@ -284,34 +289,34 @@
                     android:id="@+id/etExpiryDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/white"
-                    android:hint="Expiry Date"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
                     android:layout_marginVertical="10dp"
-                    android:fontFamily="@font/montserrat_light"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_light"
+                    android:hint="Expiry Date"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
 
                 <EditText
                     android:id="@+id/etCVV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/white"
-                    android:hint="CVV"
-                    android:layout_weight="1"
                     android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_light"
+                    android:hint="CVV"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/montserrat_light"/>
+                    android:textColorHint="@color/white" />
 
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="10dp"
-                android:layout_marginTop="20dp">
+                app:cardCornerRadius="10dp">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btContinueToDeliver"

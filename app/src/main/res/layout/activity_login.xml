@@ -64,7 +64,7 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/label"
+                android:id="@+id/labelSignIn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
@@ -91,7 +91,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/label"
+                app:layout_constraintStart_toEndOf="@id/labelSignIn"
                 app:layout_constraintWidth_percent="0.5" />
 
             <View
@@ -109,9 +109,9 @@
                 android:layout_width="100dp"
                 android:layout_height="1dp"
                 android:background="@color/secondary_fixed_dim"
-                app:layout_constraintEnd_toEndOf="@id/label"
-                app:layout_constraintStart_toStartOf="@id/label"
-                app:layout_constraintTop_toBottomOf="@id/label" />
+                app:layout_constraintEnd_toEndOf="@id/labelSignIn"
+                app:layout_constraintStart_toStartOf="@id/labelSignIn"
+                app:layout_constraintTop_toBottomOf="@id/labelSignIn" />
 
             <LinearLayout
                 android:id="@+id/llLogin"
@@ -119,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="visible"
+                android:animateLayoutChanges="true"
                 app:layout_constraintTop_toBottomOf="@+id/view1">
 
                 <TextView
@@ -131,7 +132,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintTop_toBottomOf="@+id/label" />
+                    app:layout_constraintTop_toBottomOf="@+id/labelSignIn" />
 
                 <EditText
                     android:id="@+id/etEmail"
@@ -217,6 +218,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone"
+                android:animateLayoutChanges="true"
                 app:layout_constraintTop_toBottomOf="@+id/view1">
 
                 <TextView
@@ -229,7 +231,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:layout_constraintTop_toBottomOf="@+id/label" />
+                    app:layout_constraintTop_toBottomOf="@+id/labelSignIn" />
 
                 <EditText
                     android:id="@+id/etRegisterEmail"

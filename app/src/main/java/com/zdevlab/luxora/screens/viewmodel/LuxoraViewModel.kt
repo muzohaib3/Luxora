@@ -7,6 +7,7 @@ import com.zdevlab.luxora.screens.bottomsheet.FilterModel
 import com.zdevlab.luxora.screens.fragments.home.Products
 import com.zdevlab.luxora.screens.models.BuyNowModel
 import com.zdevlab.luxora.screens.models.CartItemModel
+import com.zdevlab.luxora.screens.models.OrderDetailsModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -48,6 +49,27 @@ class LuxoraViewModel(): ViewModel(){
     }
 
     var productBasePrice = ""
+
+    private var _currentOrderIndex = MutableLiveData<Int>()
+    private var _currentStreet = MutableLiveData<String>()
+    private var _currentCity = MutableLiveData<String>()
+    val currentOrderIndex: LiveData<Int> get() = _currentOrderIndex
+    val currentStreet: LiveData<String> get() = _currentStreet
+    val currentCity: LiveData<String> get() = _currentCity
+
+    fun setOrdersIndexDetails(index: Int, street: String, city: String){
+        _currentOrderIndex.value = index
+        _currentStreet.value = street
+        _currentCity.value = city
+    }
+
+    private val _trackingOrdersList = MutableLiveData<List<OrderDetailsModel>>()
+    val trackingOrderList: LiveData<List<OrderDetailsModel>> get() = _trackingOrdersList
+
+    fun setTrackingOrderList(list:List<OrderDetailsModel>){
+        _trackingOrdersList.value = list
+    }
+
 
 
 }
